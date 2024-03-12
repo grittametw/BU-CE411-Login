@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  #login-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  input {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #0084A4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #AD15FF;
+  }
+</style>
+</head>
+<body>
+
+<div id="login-container">
+  <img src="logo_buymeonly.png" alt="Buy me only logo" width="120">
+
+    <br>
+    <h3>Login</h3>
+  <input type="text" id="username" placeholder="Username" maxlength="24" pattern="[a-z]{1,10}" required><br>
+  <input type="password" id="password" placeholder="Password" maxlength="32" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,16}$" required><br>
+  <button onclick="login()">Login</button>
+  <br>
+  <h5 onclick="forgotPassword()">Forgot Password?<h5>
+</div>
+
+<script>
+  function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // เช็คว่า username และ password ตรงตามเงื่อนไขหรือไม่
+    if (/^[a-z]{1,24}$/.test(username) && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,16}$/.test(password)) {
+      window.alert("Login successful");
+      window.open('https://shopee.co.th');
+    } else if (!/^[a-z]{1,24}$/.test(username)) {
+      window.alert("Invalid username (Username ต้องประกอบไปด้วย 10-24 ตัวอักษร และต้องเป็นอักษรพิมพ์เล็กเท่านั้น) ");
+    } else {
+      window.alert("Invalid password (password  ต้องประกอบไปด้วย 16-32 ตัวอักษร ประกอบไปด้วยตัวอักษรพิมพ์เล็ก พิมพ์ใหญ่ ตัวเลข และอักขระพิเศษ)");
+    }
+  }
+
+  function forgotPassword() {
+    window.open('https://shopee.co.th/buyer/reset');
+  }
+</script>
+
+</body>
+</html>
